@@ -9,6 +9,19 @@ const Welcome = () => {
 
   const [nameError, setNameError] = useState(true);
   const [phoneError, setPhoneError] = useState(false);
+
+  useEffect(() => {
+    if (!nameValue) {
+      setNameError(true);
+    } else {
+      setNameError(false);
+    }
+    if (phoneValue) {
+      setPhoneError(true);
+    } else {
+      setPhoneError(false);
+    }
+  });
   return (
     <div className="container">
       <div className="wrapper">
