@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { AppLabel } from "../components/AppLabel";
 import { AppButton } from "../components/AppButton";
 
 const Welcome = () => {
+  const [nameValue, setNameValue] = useState("");
+  const [phoneValue, setPhoneValue] = useState("");
+
+  const [nameError, setNameError] = useState(true);
+  const [phoneError, setPhoneError] = useState(false);
   return (
     <div className="container">
       <div className="wrapper">
@@ -20,6 +25,9 @@ const Welcome = () => {
               isRequired
               inputPlaceholder="Имя"
               inputType="text"
+              labelValue={nameValue}
+              labelChange={setNameValue}
+              hasError={nameError}
             />
             <AppLabel
               labelText="Ваше номер"
@@ -28,7 +36,9 @@ const Welcome = () => {
               isRequired={true}
               inputPlaceholder="+998 9- --- -- --"
               inputType="tel"
-              hasError={false}
+              hasError={phoneError}
+              labelValue={phoneValue}
+              labelChange={setPhoneValue}
             />
             {/* <label className="input-wrapper" htmlFor="username">
               Ваш номер

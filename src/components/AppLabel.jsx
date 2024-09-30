@@ -20,7 +20,7 @@ export const AppLabel = ({
         type={inputType}
         name={id}
         id={id}
-        // onChange={(e) => labelChange(e.target.value)}
+        onChange={(e) => labelChange(e.target.value)}
         placeholder={inputPlaceholder}
       />
       {hasError && <span id="error-message">{errorText}</span>}
