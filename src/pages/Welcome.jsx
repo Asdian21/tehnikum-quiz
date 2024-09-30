@@ -7,21 +7,36 @@ const Welcome = () => {
   const [nameValue, setNameValue] = useState("");
   const [phoneValue, setPhoneValue] = useState("");
 
-  const [nameError, setNameError] = useState(true);
+  const [checkBtn, setCheckBtn] = useState(true);
+
+  const [nameError, setNameError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
 
-  useEffect(() => {
-    if (!nameValue) {
+  const phoneRegex =
+    /^\+?\d{1,4}?[\s-]?\(?\d{1,4}\)?[\s-]?\d{1,4}[\s-]?\d{1,4}[\s-]?\d{1,9}$/;
+  const nameRegex = /^[a-zA-Zа-яА-ЯёЁ]{1,20}$/;
+
+  const handleClick = () => {
+    if (!nameRegex.test(nameValue)) {
       setNameError(true);
     } else {
       setNameError(false);
     }
-    if (phoneValue) {
+    if (!phoneRegex.test(phoneValue)) {
       setPhoneError(true);
     } else {
       setPhoneError(false);
     }
+  };
+
+  useEffect(() => {
+    if (nameValue && phoneValue) {
+      setCheckBtn(false);
+    } else {
+      setCheckBtn(true);
+    }
   });
+
   return (
     <div className="container">
       <div className="wrapper">
@@ -53,19 +68,11 @@ const Welcome = () => {
               labelValue={phoneValue}
               labelChange={setPhoneValue}
             />
-            {/* <label className="input-wrapper" htmlFor="username">
-              Ваш номер
-              <input
-                required
-                type="tel"
-                name="phone"
-                id="phone"
-                placeholder="+998 9- --- -- -- "
-                pattern="^(?:\+998)?(?:\d{2})?(?:\d{7})$"
-              />
-              <span id="error-message">Введите номер в правильном формате</span>
-            </label> */}
-            <AppButton buttonText="Далее" isDisabled={true} />
+            <AppButton
+              buttonText="Далее"
+              isDisabled={checkBtn}
+              buttonClick={handleClick}
+            />
           </form>
         </div>
       </div>
