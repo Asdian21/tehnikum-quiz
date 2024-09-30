@@ -63,7 +63,7 @@ const Welcome = () => {
               id="phone"
               isRequired={true}
               inputPlaceholder="+998 9- --- -- --"
-              inputType="tel"
+              inputType="number"
               hasError={phoneError}
               labelValue={phoneValue}
               labelChange={setPhoneValue}
