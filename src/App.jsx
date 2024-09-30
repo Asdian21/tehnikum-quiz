@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div className="App">
       <Welcome />
-      <StepOne />
+      {/* <StepOne /> */}
     </div>
   );
 };
