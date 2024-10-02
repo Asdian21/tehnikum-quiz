@@ -2,26 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Sale } from "../componentsForStepOne/Sale";
 import { SaleValue } from "../componentsForStepOne/SaleValue";
 import { Question } from "../componentsForStepOne/Question";
-import { ErrorMessage } from "../componentsForStepOne/ErrorMessage";
-import { toBeRequired } from "@testing-library/jest-dom/matchers";
 import { StepOneLabel } from "../componentsForStepOne/StepOneLabel";
+import { StepOneButton } from "../componentsForStepOne/StepOneButton";
 
 const StepOne = () => {
   const [answerValue, setAnswerValue] = useState("");
-
   const [checkButton, setCheckButton] = useState(true);
-
-  const [answerError, setAnswerError] = useState(false);
-
-  const noValue = "";
-
-  const sentAnswer = () => {
-    if (!noValue.test(answerValue)) {
-      setAnswerError(true);
-    } else {
-      setAnswerError(false);
-    }
-  };
 
   useEffect(() => {
     if (answerValue) {
@@ -29,7 +15,7 @@ const StepOne = () => {
     } else {
       setCheckButton(true);
     }
-  });
+  }, [answerValue]);
 
   return (
     <div className="container">
@@ -53,10 +39,13 @@ const StepOne = () => {
           </div>
           <div className="question">
             <Question />
-            <StepOneLabel />
-            <button type="button" disabled id="next-btn">
-              Далее
-            </button>
+            <StepOneLabel
+              placeholder="Ваш ответ"
+              inputType="text"
+              labelValue={answerValue}
+              labelChange={setAnswerValue}
+            />
+            <StepOneButton checkButton={checkButton} />
           </div>
         </div>
       </div>
