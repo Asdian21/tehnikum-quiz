@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Sale } from "../componentsForStepOne/Sale";
 import { SaleValue } from "../componentsForStepOne/SaleValue";
 import { Question } from "../componentsForStepOne/Question";
 import { ErrorMessage } from "../componentsForStepOne/ErrorMessage";
+import { toBeRequired } from "@testing-library/jest-dom/matchers";
+import { StepOneLabel } from "../componentsForStepOne/StepOneLabel";
 
 const StepOne = () => {
+  const [answerValue, setAnswerValue] = useState("");
+
+  const [checkButton, setCheckButton] = useState(true);
+
+  const [answerError, setAnswerError] = useState(false);
+
+  const noValue = "";
+
+  const sentAnswer = () => {
+    if (!noValue.test(answerValue)) {
+      setAnswerError(true);
+    } else {
+      setAnswerError(false);
+    }
+  };
+
+  useEffect(() => {
+    if (answerValue) {
+      setCheckButton(false);
+    } else {
+      setCheckButton(true);
+    }
+  });
+
   return (
     <div className="container">
       <div className="wrapper">
@@ -27,15 +53,7 @@ const StepOne = () => {
           </div>
           <div className="question">
             <Question />
-            <label className="input-wrapper">
-              <input
-                required
-                type="text"
-                name="answer"
-                placeholder="Ваш ответ"
-              />
-              <ErrorMessage />
-            </label>
+            <StepOneLabel />
             <button type="button" disabled id="next-btn">
               Далее
             </button>

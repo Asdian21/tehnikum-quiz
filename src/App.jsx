@@ -6,8 +6,8 @@ import StepOne from "./pages/StepOne";
 const App = () => {
   return (
     <div className="App">
-      <Welcome />
-      {/* <StepOne /> */}
+      {/* <Welcome /> */}
+      <StepOne />
     </div>
   );
 };
