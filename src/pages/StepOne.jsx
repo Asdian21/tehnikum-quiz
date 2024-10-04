@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { StepOneLabel } from "../componentsForStepOne/StepOneLabel";
-import { StepOneButton } from "../componentsForStepOne/StepOneButton";
+import { StepOneLabel } from "../components/StepOneLabel";
 import { Header } from "../components/Header";
 import { OneProgressBar } from "../components/OneProgressBar";
+import { AppButton } from "../components/AppButton";
 
 const StepOne = () => {
   const [answerValue, setAnswerValue] = useState("");
@@ -32,7 +32,7 @@ const StepOne = () => {
               labelValue={answerValue}
               labelChange={setAnswerValue}
             />
-            <StepOneButton checkButton={checkButton} />
+            <AppButton isDisabled={checkButton} buttonText="Далее" />
           </div>
         </div>
       </div>
