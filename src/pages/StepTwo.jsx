@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ProgressBar } from "../components/ProgressBar";
 import { Header } from "../components/Header";
 import { AnswerLabel } from "../components/AnswerLabel";
+import { AppButton } from "../components/AppButton";
 
 const StepTwo = () => {
   const [course, setCourse] = useState(null);
@@ -25,7 +26,7 @@ const StepTwo = () => {
     },
   ];
 
-  console.log(course);
+  // console.log(course);
 
   return (
     <div className="container">
@@ -44,9 +45,7 @@ const StepTwo = () => {
                 />
               ))}
             </ul>
-            <button type="button" disabled id="next-btn">
-              Далее
-            </button>
+            <AppButton />
           </div>
         </div>
       </div>
