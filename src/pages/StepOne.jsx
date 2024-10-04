@@ -24,7 +24,10 @@ const StepOne = () => {
           <div className="indicator">
             <div className="indicator__text">
               <span className="indicator__description">
-                <Sale />
+                <Header
+                  headerType="h2"
+                  headerText="Скидка за прохождение опроса:"
+                />
               </span>
               <span className="indicator__value">
                 <SaleValue />
