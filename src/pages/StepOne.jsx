@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Sale } from "../componentsForStepOne/Sale";
-import { SaleValue } from "../componentsForStepOne/SaleValue";
 import { Question } from "../componentsForStepOne/Question";
 import { StepOneLabel } from "../componentsForStepOne/StepOneLabel";
 import { StepOneButton } from "../componentsForStepOne/StepOneButton";
+import { Header } from "../components/Header";
+import { OneProgressBar } from "../components/OneProgressBar";
 
 const StepOne = () => {
   const [answerValue, setAnswerValue] = useState("");
@@ -21,25 +21,7 @@ const StepOne = () => {
     <div className="container">
       <div className="wrapper">
         <div className="single-input-quiz">
-          <div className="indicator">
-            <div className="indicator__text">
-              <span className="indicator__description">
-                <Header
-                  headerType="h2"
-                  headerText="Скидка за прохождение опроса:"
-                />
-              </span>
-              <span className="indicator__value">
-                <SaleValue />
-              </span>
-            </div>
-            <div className="indicator__progressbar">
-              <div className="indicator__unit indicator__unit-1"></div>
-              <div className="indicator__unit indicator__unit-2"></div>
-              <div className="indicator__unit indicator__unit-3"></div>
-              <div className="indicator__unit indicator__unit-4"></div>
-            </div>
-          </div>
+          <OneProgressBar />
           <div className="question">
             <Question />
             <StepOneLabel
