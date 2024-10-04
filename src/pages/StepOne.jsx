@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Question } from "../componentsForStepOne/Question";
 import { StepOneLabel } from "../componentsForStepOne/StepOneLabel";
 import { StepOneButton } from "../componentsForStepOne/StepOneButton";
 import { Header } from "../components/Header";
@@ -23,7 +22,10 @@ const StepOne = () => {
         <div className="single-input-quiz">
           <OneProgressBar />
           <div className="question">
-            <Question />
+            <Header
+              headerType="h2"
+              headerText="1. Нужно ли получать специальное IT образование?"
+            />
             <StepOneLabel
               placeholder="Ваш ответ"
               inputType="text"

@@ -45,7 +45,11 @@ const StepTwo = () => {
                 />
               ))}
             </ul>
-            <AppButton />
+            {!course ? (
+              <AppButton isDisabled buttonText="Далее" />
+            ) : (
+              <AppButton isDisabled={false} buttonText="Далее" />
+            )}
           </div>
         </div>
       </div>
