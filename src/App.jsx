@@ -11,27 +11,27 @@ import Thanks from "./pages/Thanks";
 const routerConfig = createBrowserRouter([
   {
     path: "/",
-    components: <Welcome />,
+    element: <Welcome />,
   },
   {
     path: "/step-one",
-    components: <StepOne />,
+    element: <StepOne />,
   },
   {
     path: "/step-two",
-    components: <StepTwo />,
+    element: <StepTwo />,
   },
   {
     path: "/step-three",
-    components: <StepThree />,
+    element: <StepThree />,
   },
   {
     path: "/step-four",
-    components: <StepFour />,
+    element: <StepFour />,
   },
   {
     path: "/thanks",
-    components: <Thanks />,
+    element: <Thanks />,
   },
 ]);
 
