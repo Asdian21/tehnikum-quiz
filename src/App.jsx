@@ -38,7 +38,8 @@ const routerConfig = createBrowserRouter([
 const App = () => {
   return (
     <div className="App">
-      <Welcome />
+      <RouterProvider router={routerConfig} />
+      {/* <Welcome /> */}
       {/* <StepOne /> */}
       {/* <StepTwo /> */}
     </div>
