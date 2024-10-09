@@ -24,5 +24,16 @@ export const ThemeProvider = ({ children }) => {
     // setThemeValue(themeValue === themes.dark ? themes.light : themes.dark);
   };
 
-  return <ThemeContext.Provider>{children}</ThemeContext.Provider>;
+  const contextValue = useMemo(() => {
+    return {
+      theme: themeValue,
+      toggleTheme,
+    };
+  }, [themeValue]);
+
+  return (
+    <ThemeContext.Provider value={contextValue}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
