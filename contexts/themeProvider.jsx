@@ -4,6 +4,16 @@ import { ThemeContext, themes } from "./themeContext";
 export const ThemeProvider = ({ children }) => {
   cosnt[(themeValue, setThemeValue)] = useState(themes.light);
 
+  useEffect(() => {
+    const presistedTheme = localStorage.getItem(
+      "currentTheme",
+      JSON.parse(newTheme)
+    );
+    if (presistedTheme) {
+      setThemeValue(presistedTheme);
+    }
+  }, []);
+
   // Переключение темы
   const toggleTheme = () => {
     setThemeValue((prev) => {
