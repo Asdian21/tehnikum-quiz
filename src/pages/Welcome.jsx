@@ -4,6 +4,7 @@ import { AppLabel } from "../components/AppLabel";
 import { AppButton } from "../components/AppButton";
 import { useNavigate } from "react-router-dom";
 import { LinkButton } from "../components/LinkButton";
+import { themes } from "../contexts/themeContext";
 
 const Welcome = () => {
   const navigate = useNavigate("");

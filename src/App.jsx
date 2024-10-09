@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import StepFour from "./pages/StepFour";
 import StepThree from "./pages/StepThree";
 import Thanks from "./pages/Thanks";
+import { ThemeProvider } from "./contexts/themeProvider";
 
 const routerConfig = createBrowserRouter([
   {
@@ -37,13 +38,15 @@ const routerConfig = createBrowserRouter([
 
 const App = () => {
   return (
-    <div className="App">
-      <RouterProvider router={routerConfig} />
-      {/* <Welcome /> */}
-      {/* <StepOne /> */}
-      {/* <StepTwo /> */}
-      {/* <StepThree /> */}
-    </div>
+    <ThemeProvider>
+      <div className="App">
+        <RouterProvider router={routerConfig} />
+        {/* <Welcome /> */}
+        {/* <StepOne /> */}
+        {/* <StepTwo /> */}
+        {/* <StepThree /> */}
+      </div>
+    </ThemeProvider>
   );
 };
 
