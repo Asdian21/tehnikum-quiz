@@ -1,11 +1,36 @@
 import React from "react";
+import { LinkButton } from "../components/LinkButton";
+import { ProgressBar } from "../components/ProgressBar";
+import { Header } from "../components/Header";
 
 const StepThree = () => {
+  const [emoji, setEmoji] = useState("");
+
+  const emojiVariants = [
+    {
+      emoji_id: "var-1",
+      emojiName: "laugh",
+    },
+    {
+      emoji_id: "var-2",
+      emojiName: "love",
+    },
+    {
+      emoji_id: "var-3",
+      emojiName: "cool",
+    },
+    {
+      emoji_id: "var-4",
+      emojiName: "shock",
+    },
+  ];
+
   return (
     <div className="container">
       <div className="wrapper">
         <div className="emoji-quiz">
-          <div className="indicator">
+          <ProgressBar currentStep={3} currentValue="75%" />
+          {/* <div className="indicator">
             <div className="indicator__text">
               <span className="indicator__description">
                 Скидка за прохождение опроса:
@@ -18,11 +43,19 @@ const StepThree = () => {
               <div className="indicator__unit indicator__unit-3"></div>
               <div className="indicator__unit indicator__unit-4"></div>
             </div>
-          </div>
+          </div> */}
           <div className="question">
-            <h2>3. Занимательный вопрос</h2>
+            <Header headerType="h2" headerText="Занимательный вопрос" />
             <ul className="emoji-variants">
-              <li className="variant-wrapper">
+              {emojiVariants.map((elem) => (
+                <AnswerLabel
+                  id={elem.emoji_id}
+                  AnswerLabel={elem.emojiName}
+                  key={elem.emoji_id}
+                  labelChange={() => setEmoji(elem.emojiName)}
+                />
+              ))}
+              {/* <li className="variant-wrapper">
                 <input required type="radio" name="variant" id="variant-1" />
                 <label htmlFor="variant-1">
                   <img src="./img/laugh.png" alt="laugh" />
@@ -49,11 +82,9 @@ const StepThree = () => {
                   <img src="./img/fright.png" alt="fright" />
                   <p>Ваш ответ 4</p>
                 </label>
-              </li>
+              </li> */}
             </ul>
-            <button type="button" disabled id="next-btn">
-              Далее
-            </button>
+            <LinkButton path="/step-four" />
           </div>
         </div>
       </div>

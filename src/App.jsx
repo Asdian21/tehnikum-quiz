@@ -42,6 +42,7 @@ const App = () => {
       {/* <Welcome /> */}
       {/* <StepOne /> */}
       {/* <StepTwo /> */}
+      {/* <StepThree /> */}
     </div>
   );
 };

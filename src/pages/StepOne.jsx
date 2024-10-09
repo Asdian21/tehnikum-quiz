@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { StepOneLabel } from "../components/StepOneLabel";
 import { Header } from "../components/Header";
-import { OneProgressBar } from "../components/OneProgressBar";
 import { AppButton } from "../components/AppButton";
+import { ProgressBar } from "../components/ProgressBar";
+import { LinkButton } from "../components/LinkButton";
 
 const StepOne = () => {
   const [answerValue, setAnswerValue] = useState("");
@@ -20,7 +21,7 @@ const StepOne = () => {
     <div className="container">
       <div className="wrapper">
         <div className="single-input-quiz">
-          <OneProgressBar />
+          <ProgressBar currentStep={1} currentValue="25%" />
           <div className="question">
             <Header
               headerType="h2"
@@ -32,7 +33,7 @@ const StepOne = () => {
               labelValue={answerValue}
               labelChange={setAnswerValue}
             />
-            <AppButton isDisabled={checkButton} buttonText="Далее" />
+            <LinkButton path="/step-two" headerText="Далее" />
           </div>
         </div>
       </div>

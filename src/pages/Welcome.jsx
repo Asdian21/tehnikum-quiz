@@ -3,6 +3,7 @@ import { Header } from "../components/Header";
 import { AppLabel } from "../components/AppLabel";
 import { AppButton } from "../components/AppButton";
 import { useNavigate } from "react-router-dom";
+import { LinkButton } from "../components/LinkButton";
 
 const Welcome = () => {
   const navigate = useNavigate("");
@@ -19,14 +20,18 @@ const Welcome = () => {
     /^\+?\d{1,4}?[\s-]?\(?\d{1,4}\)?[\s-]?\d{1,4}[\s-]?\d{1,4}[\s-]?\d{1,9}$/;
   const nameRegex = /^[a-zA-Zа-яА-ЯёЁ]{1,20}$/;
 
-  const goToNextPage = (path) => {
-    navigate(path);
+  const goToNextPage = () => {
+    navigate("/step-one");
   };
 
   const handleClick = () => {
-    !nameRegex.test(nameValue) ? setNameError(true) : setNameError(false);
-    !phoneRegex.test(phoneValue) ? setPhoneError(true) : setPhoneError(false);
-    if (nameError || phoneError) {
+    const isNameError = !nameRegex.test(nameValue);
+    const isPhoneError = !phoneRegex.test(phoneValue);
+
+    setNameError(isNameError);
+    setPhoneError(isPhoneError);
+
+    if (!isNameError && !isPhoneError) {
       goToNextPage();
     }
   };

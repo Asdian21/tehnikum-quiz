@@ -3,6 +3,7 @@ import { ProgressBar } from "../components/ProgressBar";
 import { Header } from "../components/Header";
 import { AnswerLabel } from "../components/AnswerLabel";
 import { AppButton } from "../components/AppButton";
+import { LinkButton } from "../components/LinkButton";
 
 const StepTwo = () => {
   const [course, setCourse] = useState(null);
@@ -32,7 +33,7 @@ const StepTwo = () => {
     <div className="container">
       <div className="wrapper">
         <div className="variants-quiz">
-          <ProgressBar />
+          <ProgressBar currentStep={2} currentValue="50%" />
           <div className="question">
             <Header headerType="h2" headerText="Какой курс вас интересует?" />
             <ul className="variants">
@@ -45,11 +46,7 @@ const StepTwo = () => {
                 />
               ))}
             </ul>
-            {!course ? (
-              <AppButton isDisabled buttonText="Далее" />
-            ) : (
-              <AppButton isDisabled={false} buttonText="Далее" />
-            )}
+            <LinkButton path="/step-three" headerText="Далее" />
           </div>
         </div>
       </div>
