@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import StepFour from "./pages/StepFour";
 import StepThree from "./pages/StepThree";
 import Thanks from "./pages/Thanks";
-import { ThemeProvider } from "./contexts/themeProvider";
+import { ThemeProvider } from "./new_contexts/ThemeProvider";
 
 const routerConfig = createBrowserRouter([
   {

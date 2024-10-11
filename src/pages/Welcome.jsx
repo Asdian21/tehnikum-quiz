@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { AppLabel } from "../components/AppLabel";
 import { AppButton } from "../components/AppButton";
 import { useNavigate } from "react-router-dom";
 import { LinkButton } from "../components/LinkButton";
-import { themes } from "../contexts/themeContext";
+import { ThemeContext } from "../contexts/themeContext";
 
 const Welcome = () => {
   const navigate = useNavigate("");
@@ -16,6 +16,9 @@ const Welcome = () => {
 
   const [nameError, setNameError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
+
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  console.log("theme", theme);
 
   const phoneRegex =
     /^\+?\d{1,4}?[\s-]?\(?\d{1,4}\)?[\s-]?\d{1,4}[\s-]?\d{1,4}[\s-]?\d{1,9}$/;
@@ -46,9 +49,10 @@ const Welcome = () => {
   });
 
   return (
-    <div className="container">
+    <div className={`container ${theme === themes.dark && "_dark"}`}>
       <div className="wrapper">
         <div className="welcome">
+          <button onClick={toggleTheme}>Смена темы</button>
           <Header
             headerType="h1"
             headerText="Добро пожаловать в квиз от лучшего учебного центра"

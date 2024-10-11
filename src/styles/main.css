@@ -14,7 +14,8 @@ body {
   color: #22222a;
 }
 
-#root, .App {
+#root,
+.App {
   height: 100%;
 }
 
@@ -45,6 +46,10 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.container._dark {
+  background-color: black;
 }
 
 .wrapper {
@@ -138,7 +143,8 @@ button:enabled:hover {
   color: #a497f9;
   box-shadow: 0 0 20px #a497f9;
 }
-button:disabled:hover, button:disabled:active {
+button:disabled:hover,
+button:disabled:active {
   opacity: 0.5;
   cursor: default;
 }
@@ -190,7 +196,7 @@ button:enabled:active {
 .question h2 {
   margin-bottom: 32px;
 }
-.question input[type=text] {
+.question input[type="text"] {
   margin-bottom: 32px;
 }
 
@@ -201,7 +207,7 @@ button:enabled:active {
 .variants .variant-wrapper:not(:last-child) {
   margin-bottom: 16px;
 }
-.variants .variant-wrapper input[type=radio] {
+.variants .variant-wrapper input[type="radio"] {
   display: none;
 }
 .variants .variant-wrapper label {
@@ -213,7 +219,7 @@ button:enabled:active {
   border-radius: 8px;
   transition: 200ms;
 }
-.variants .variant-wrapper input[type=radio]:checked + label {
+.variants .variant-wrapper input[type="radio"]:checked + label {
   border-color: #a497f9;
   background-color: #f3f2ff;
 }
@@ -221,7 +227,7 @@ button:enabled:active {
 .question h2 {
   margin-bottom: 32px;
 }
-.question input[type=text] {
+.question input[type="text"] {
   margin-bottom: 32px;
 }
 
@@ -229,13 +235,13 @@ button:enabled:active {
   list-style: none;
   margin-bottom: 32px;
   display: grid;
-  grid-template: repeat(2, 1fr)/repeat(2, 1fr);
+  grid-template: repeat(2, 1fr) / repeat(2, 1fr);
   gap: 16px;
 }
 .emoji-variants .variant-wrapper {
   cursor: pointer;
 }
-.emoji-variants .variant-wrapper input[type=radio] {
+.emoji-variants .variant-wrapper input[type="radio"] {
   display: none;
 }
 .emoji-variants .variant-wrapper label {
@@ -253,13 +259,13 @@ button:enabled:active {
 }
 .emoji-variants .variant-wrapper label img {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-bottom: 20px;
 }
 .emoji-variants .variant-wrapper label p {
   width: 100%;
 }
-.emoji-variants .variant-wrapper input[type=radio]:checked + label {
+.emoji-variants .variant-wrapper input[type="radio"]:checked + label {
   border-color: #a497f9;
   background-color: #f3f2ff;
 }
@@ -267,7 +273,7 @@ button:enabled:active {
 .question h2 {
   margin-bottom: 32px;
 }
-.question input[type=text] {
+.question input[type="text"] {
   margin-bottom: 32px;
 }
 
@@ -281,7 +287,7 @@ button:enabled:active {
 .level-variants .variant-wrapper {
   flex: 1 1 20%;
 }
-.level-variants .variant-wrapper input[type=radio] {
+.level-variants .variant-wrapper input[type="radio"] {
   display: none;
 }
 .level-variants .variant-wrapper label {
@@ -301,13 +307,13 @@ button:enabled:active {
 }
 .level-variants .variant-wrapper label img {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-bottom: 20px;
 }
 .level-variants .variant-wrapper label p {
   width: 100%;
 }
-.level-variants .variant-wrapper input[type=radio]:checked + label {
+.level-variants .variant-wrapper input[type="radio"]:checked + label {
   border-color: #a497f9;
   background-color: #f3f2ff;
 }
@@ -323,20 +329,20 @@ button:enabled:active {
   font-size: 12px;
   width: 100%;
 }
-.level-variants .variant-wrapper label[for=variant-1]::after {
+.level-variants .variant-wrapper label[for="variant-1"]::after {
   content: "скорее нет";
 }
-.level-variants .variant-wrapper label[for=variant-3]::after {
+.level-variants .variant-wrapper label[for="variant-3"]::after {
   content: "не знаю";
 }
-.level-variants .variant-wrapper label[for=variant-5]::after {
+.level-variants .variant-wrapper label[for="variant-5"]::after {
   content: "скорее да";
 }
 
 .thanks img {
   width: 160px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   display: block;
   margin: 0 auto 60px;
 }
@@ -347,4 +353,4 @@ button:enabled:active {
   font-size: 18px;
   text-align: center;
   margin-bottom: 16px;
-}/*# sourceMappingURL=main.css.map */
+} /*# sourceMappingURL=main.css.map */

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { ThemeContext, themes } from "./themeContext";
+import { ThemeContext } from "./ThemeContext";
 
 export const ThemeProvider = ({ children }) => {
-  cosnt[(themeValue, setThemeValue)] = useState(themes.light);
+  const [themeValue, setThemeValue] = useState(themes.light);
 
   useEffect(() => {
     const presistedTheme = localStorage.getItem(
