@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { ProgressBar } from "../components/ProgressBar";
 import { Header } from "../components/Header";
 import { AnswerLabel } from "../components/AnswerLabel";
 import { AppButton } from "../components/AppButton";
 import { LinkButton } from "../components/LinkButton";
+import { ThemeContext } from "../new_contexts/ThemeContext";
 
 const StepTwo = () => {
+  const { theme } = useContext(ThemeContext);
   const [course, setCourse] = useState(null);
 
   const variants = [
@@ -30,23 +32,25 @@ const StepTwo = () => {
   // console.log(course);
 
   return (
-    <div className="container">
-      <div className="wrapper">
-        <div className="variants-quiz">
-          <ProgressBar currentStep={2} currentValue="50%" />
-          <div className="question">
-            <Header headerType="h2" headerText="Какой курс вас интересует?" />
-            <ul className="variants">
-              {variants.map((elem) => (
-                <AnswerLabel
-                  id={elem.id}
-                  AnswerLabel={elem.courseName}
-                  key={elem.id}
-                  labelChange={() => setCourse(elem.courseName)}
-                />
-              ))}
-            </ul>
-            <LinkButton path="/step-three" headerText="Далее" />
+    <div className={`container ${theme === "dark" ? "_dark" : ""}`}>
+      <div className="container">
+        <div className="wrapper">
+          <div className="variants-quiz">
+            <ProgressBar currentStep={2} currentValue="50%" />
+            <div className="question">
+              <Header headerType="h2" headerText="Какой курс вас интересует?" />
+              <ul className="variants">
+                {variants.map((elem) => (
+                  <AnswerLabel
+                    id={elem.id}
+                    AnswerLabel={elem.courseName}
+                    key={elem.id}
+                    labelChange={() => setCourse(elem.courseName)}
+                  />
+                ))}
+              </ul>
+              <LinkButton path="/step-three" headerText="Далее" />
+            </div>
           </div>
         </div>
       </div>
