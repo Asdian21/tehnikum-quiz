@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { ProgressBar } from "../components/ProgressBar";
 import { Header } from "../components/Header";
 
 const StepFour = () => {
+  const [number, setNumber] = useState("");
+
+  const levelVariants = [
+    {
+      id: "1_variant",
+      levelId: "1",
+    },
+    {
+      id: "2_variant",
+      levelId: "2",
+    },
+    {
+      id: "3_variant",
+      levelId: "3",
+    },
+    {
+      id: "4_variant",
+      levelId: "4",
+    },
+    {
+      id: "5_variant",
+      levelId: "5",
+    },
+  ];
+
   return (
     <div className="container">
       <div className="wrapper">
