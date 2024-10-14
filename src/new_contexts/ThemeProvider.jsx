@@ -1,27 +1,22 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { ThemeContext } from "./ThemeContext";
+import { ThemeContext, themes } from "./ThemeContext";
 
 export const ThemeProvider = ({ children }) => {
   const [themeValue, setThemeValue] = useState(themes.light);
 
   useEffect(() => {
-    const presistedTheme = localStorage.getItem(
-      "currentTheme",
-      JSON.parse(newTheme)
-    );
+    const presistedTheme = localStorage.getItem("currentTheme");
     if (presistedTheme) {
-      setThemeValue(presistedTheme);
+      setThemeValue(JSON.parse(presistedTheme));
     }
   }, []);
 
-  // Переключение темы
   const toggleTheme = () => {
     setThemeValue((prev) => {
-      let newTheme = prev === themes.light ? themes.dark : theme.light;
+      let newTheme = prev === themes.light ? themes.dark : themes.light;
       localStorage.setItem("currentTheme", JSON.stringify(newTheme));
       return newTheme;
     });
-    // setThemeValue(themeValue === themes.dark ? themes.light : themes.dark);
   };
 
   const contextValue = useMemo(() => {

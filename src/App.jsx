@@ -41,10 +41,6 @@ const App = () => {
     <ThemeProvider>
       <div className="App">
         <RouterProvider router={routerConfig} />
-        {/* <Welcome /> */}
-        {/* <StepOne /> */}
-        {/* <StepTwo /> */}
-        {/* <StepThree /> */}
       </div>
     </ThemeProvider>
   );

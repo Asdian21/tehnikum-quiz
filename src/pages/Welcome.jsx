@@ -49,7 +49,7 @@ const Welcome = () => {
   });
 
   return (
-    <div className={`container ${theme === themes.dark && "_dark"}`}>
+    <div className={`container ${theme === theme.dark && "_dark"}`}>
       <div className="wrapper">
         <div className="welcome">
           <button onClick={toggleTheme}>Смена темы</button>
