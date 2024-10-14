@@ -1,5 +1,6 @@
 import React from "react";
 import { ProgressBar } from "../components/ProgressBar";
+import { Header } from "../components/Header";
 
 const StepFour = () => {
   return (
@@ -22,7 +23,7 @@ const StepFour = () => {
             </div>
           </div> */}
           <div className="question">
-            <h2>4. Занимательный вопрос</h2>
+            <Header headerType="h2" headerText="4. Занимательный вопрос" />
             <ul className="level-variants">
               <li className="variant-wrapper">
                 <input required type="radio" name="variant" id="variant-1" />
