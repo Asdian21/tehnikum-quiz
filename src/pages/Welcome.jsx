@@ -3,8 +3,7 @@ import { Header } from "../components/Header";
 import { AppLabel } from "../components/AppLabel";
 import { AppButton } from "../components/AppButton";
 import { useNavigate } from "react-router-dom";
-import { LinkButton } from "../components/LinkButton";
-import { ThemeContext } from "../contexts/themeContext";
+import { ThemeContext } from "../new_contexts/ThemeContext";
 
 const Welcome = () => {
   const navigate = useNavigate("");
@@ -46,10 +45,10 @@ const Welcome = () => {
     } else {
       setCheckBtn(true);
     }
-  });
+  }, [nameValue, phoneValue]);
 
   return (
-    <div className={`container ${theme === theme.dark && "_dark"}`}>
+    <div className={`container ${theme === "dark" ? "_dark" : ""}`}>
       <div className="wrapper">
         <div className="welcome">
           <button onClick={toggleTheme}>Смена темы</button>
@@ -70,12 +69,12 @@ const Welcome = () => {
               hasError={nameError}
             />
             <AppLabel
-              labelText="Ваше номер"
+              labelText="Ваш номер"
               errorText="Введите номер в правильном формате"
               id="phone"
               isRequired={true}
               inputPlaceholder="+998 9- --- -- --"
-              inputType="number"
+              inputType="text"
               hasError={phoneError}
               labelValue={phoneValue}
               labelChange={setPhoneValue}
