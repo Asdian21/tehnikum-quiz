@@ -1,14 +1,21 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { ProgressBar } from "../components/ProgressBar";
 import { Header } from "../components/Header";
 import { AnswerLabel } from "../components/AnswerLabel";
 import { AppButton } from "../components/AppButton";
 import { LinkButton } from "../components/LinkButton";
 import { ThemeContext } from "../new_contexts/ThemeContext";
+import { isDisabled } from "@testing-library/user-event/dist/utils";
+import { useLocation } from "react-router-dom";
 
 const StepTwo = () => {
+  const location = useLocation();
+  const { previousNameValue, previousPhoneValue, eshkereValue } =
+    location.state || "";
+
   const { theme } = useContext(ThemeContext);
   const [course, setCourse] = useState(null);
+  const [checkButton, setCheckButton] = useState(true);
 
   const variants = [
     {
@@ -29,7 +36,13 @@ const StepTwo = () => {
     },
   ];
 
-  // console.log(course);
+  useEffect(() => {
+    if (course) {
+      setCheckButton(false);
+    } else {
+      setCheckButton(true);
+    }
+  }, [course]);
 
   return (
     <div className={`container ${theme === "dark" ? "_dark" : ""}`}>
@@ -49,7 +62,8 @@ const StepTwo = () => {
                   />
                 ))}
               </ul>
-              <LinkButton path="/step-three" headerText="Далее" />
+              <LinkButton path="/step-three" isDisabled={checkButton} />
+              {/* <p>{course}</p> */}
             </div>
           </div>
         </div>

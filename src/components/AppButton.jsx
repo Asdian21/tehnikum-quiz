@@ -2,7 +2,7 @@ import React from "react";
 
 export const AppButton = ({
   buttonText,
-  buttonType,
+  buttonType = "button",
   isDisabled,
   buttonClick,
 }) => {

@@ -24,7 +24,7 @@ const Welcome = () => {
   const nameRegex = /^[a-zA-Zа-яА-ЯёЁ]{1,20}$/;
 
   const goToNextPage = () => {
-    navigate("/step-one");
+    navigate("/step-one", { state: { nameValue, phoneValue } });
   };
 
   const handleClick = () => {

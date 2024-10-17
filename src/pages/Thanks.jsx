@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../new_contexts/ThemeContext";
+import { useLocation } from "react-router-dom";
 
 const Thanks = () => {
   const { theme } = useContext(ThemeContext);
+  const location = useLocation();
+
   return (
     <div className={`container ${theme === "dark" ? "_dark" : ""}`}>
       <div className="container">

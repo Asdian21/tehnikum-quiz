@@ -5,19 +5,51 @@ import { AppButton } from "../components/AppButton";
 import { ProgressBar } from "../components/ProgressBar";
 import { LinkButton } from "../components/LinkButton";
 import { ThemeContext } from "../new_contexts/ThemeContext";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const StepOne = () => {
-  const { theme } = useContext(ThemeContext);
-  const [answerValue, setAnswerValue] = useState("");
-  const [checkButton, setCheckButton] = useState(true);
+  const location = useLocation();
+  const previousNameValue = location.state?.nameValue || "";
+  const previousPhoneValue = location.state?.phoneValue || "";
 
+  const navigate = useNavigate();
+  const { theme } = useContext(ThemeContext);
+
+  const [eshkereValue, setEshkereValue] = useState("");
+  const [checkButton, setCheckButton] = useState(true);
+  const [eshkereError, setEshkereError] = useState(false);
+
+  const eshkereRegex = /^[a-zA-Zа-яА-ЯёЁ]{1,20}$/;
+
+  // Переход на следующую страницу
+  const goToNextPage = () => {
+    navigate("/step-two", {
+      state: {
+        previousNameValue,
+        previousPhoneValue,
+        eshkereValue,
+      },
+    });
+  };
+
+  // Обработка клика на кнопку
+  const handleClick = () => {
+    const isEshkereError = !eshkereRegex.test(eshkereValue);
+    setEshkereError(isEshkereError);
+
+    if (!isEshkereError) {
+      goToNextPage();
+    }
+  };
+
+  // Следим за вводом в поле и обновляем состояние кнопки
   useEffect(() => {
-    if (answerValue) {
+    if (eshkereValue) {
       setCheckButton(false);
     } else {
       setCheckButton(true);
     }
-  }, [answerValue]);
+  }, [eshkereValue]);
 
   return (
     <div className={`container ${theme === "dark" ? "_dark" : ""}`}>
@@ -33,10 +65,15 @@ const StepOne = () => {
               <StepOneLabel
                 placeholder="Ваш ответ"
                 inputType="text"
-                labelValue={answerValue}
-                labelChange={setAnswerValue}
+                labelValue={eshkereValue}
+                labelChange={setEshkereValue}
+                hasError={eshkereError}
               />
-              <LinkButton path="/step-two" headerText="Далее" />
+              <AppButton
+                buttonText="Далее"
+                isDisabled={checkButton}
+                buttonClick={handleClick}
+              />
             </div>
           </div>
         </div>
