@@ -21,7 +21,6 @@ const StepOne = () => {
 
   const eshkereRegex = /^[a-zA-Zа-яА-ЯёЁ]{1,20}$/;
 
-  // Переход на следующую страницу
   const goToNextPage = () => {
     navigate("/step-two", {
       state: {
@@ -32,7 +31,6 @@ const StepOne = () => {
     });
   };
 
-  // Обработка клика на кнопку
   const handleClick = () => {
     const isEshkereError = !eshkereRegex.test(eshkereValue);
     setEshkereError(isEshkereError);
@@ -42,7 +40,6 @@ const StepOne = () => {
     }
   };
 
-  // Следим за вводом в поле и обновляем состояние кнопки
   useEffect(() => {
     if (eshkereValue) {
       setCheckButton(false);
