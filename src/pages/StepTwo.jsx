@@ -6,7 +6,7 @@ import { AppButton } from "../components/AppButton";
 import { LinkButton } from "../components/LinkButton";
 import { ThemeContext } from "../new_contexts/ThemeContext";
 import { isDisabled } from "@testing-library/user-event/dist/utils";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const StepTwo = () => {
   const location = useLocation();
@@ -16,6 +16,18 @@ const StepTwo = () => {
   const { theme } = useContext(ThemeContext);
   const [course, setCourse] = useState(null);
   const [checkButton, setCheckButton] = useState(true);
+
+  const navigate = useNavigate();
+  const goToNextPage = () => {
+    navigate("/step-three", {
+      state: {
+        previousNameValue,
+        previousPhoneValue,
+        eshkereValue,
+        course,
+      },
+    });
+  };
 
   const variants = [
     {
@@ -44,6 +56,12 @@ const StepTwo = () => {
     }
   }, [course]);
 
+  const handleClick = () => {
+    if (course) {
+      goToNextPage();
+    }
+  };
+
   return (
     <div className={`container ${theme === "dark" ? "_dark" : ""}`}>
       <div className="container">
@@ -62,8 +80,11 @@ const StepTwo = () => {
                   />
                 ))}
               </ul>
-              <LinkButton path="/step-three" isDisabled={checkButton} />
-              {/* <p>{course}</p> */}
+              <AppButton
+                buttonClick={handleClick}
+                isDisabled={checkButton}
+                buttonText="Далее"
+              />
             </div>
           </div>
         </div>

@@ -4,8 +4,13 @@ import { ProgressBar } from "../components/ProgressBar";
 import { Header } from "../components/Header";
 import { AnswerLabel } from "../components/AnswerLabel"; // Проверь, существует ли этот компонент
 import { ThemeContext } from "../new_contexts/ThemeContext";
+import { useLocation } from "react-router-dom";
 
 const StepThree = () => {
+  const location = useLocation();
+  const { previousNameValue, previousPhoneValue, eshkereValue, course } =
+    location.state || "";
+
   const { theme } = useContext(ThemeContext);
   const [emoji, setEmoji] = useState("");
 
@@ -13,22 +18,22 @@ const StepThree = () => {
     {
       emoji_id: "var-1",
       emojiName: "laugh",
-      //<img src="./img/laugh.png" alt="laugh" />
+      emojiImg: <img src="./img/laugh.png" alt="laugh" />,
     },
     {
       emoji_id: "var-2",
       emojiName: "love",
-      // <img src="./img/hearts.png" alt="hearts" />
+      emojiImg: <img src="./img/hearts.png" alt="hearts" />,
     },
     {
       emoji_id: "var-3",
       emojiName: "cool",
-      //<img src="./img/smirk.png" alt="smirk" />
+      emojiImg: <img src="./img/smirk.png" alt="smirk" />,
     },
     {
       emoji_id: "var-4",
       emojiName: "shock",
-      //<img src="./img/fright.png" alt="fright" />
+      emojiImg: <img src="./img/fright.png" alt="fright" />,
     },
   ];
 
@@ -44,13 +49,15 @@ const StepThree = () => {
                 {emojiVariants.map((elem) => (
                   <AnswerLabel
                     id={elem.emoji_id}
-                    labelText={elem.emojiName} // Исправлено имя пропса
+                    AnswerLabel={elem.emojiName}
+                    emojiImg={elem.emojiImg}
                     key={elem.emoji_id}
                     labelChange={() => setEmoji(elem.emojiName)}
                   />
                 ))}
               </ul>
               <LinkButton path="/step-four" />
+              {/* <p>{course}</p> */}
             </div>
           </div>
         </div>

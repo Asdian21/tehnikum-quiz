@@ -1,6 +1,6 @@
 import React from "react";
 
-export const AnswerLabel = ({ AnswerLabel, id, labelChange }) => {
+export const AnswerLabel = ({ AnswerLabel, id, labelChange, emojiImg }) => {
   return (
     <li className="variant-wrapper">
       <input
@@ -10,7 +10,10 @@ export const AnswerLabel = ({ AnswerLabel, id, labelChange }) => {
         id={id}
         onChange={labelChange}
       />
-      <label htmlFor={id}>{AnswerLabel}</label>
+      <label htmlFor={id}>
+        {emojiImg}
+        {AnswerLabel}
+      </label>
     </li>
   );
 };
