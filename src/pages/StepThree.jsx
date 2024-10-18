@@ -1,10 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { LinkButton } from "../components/LinkButton";
 import { ProgressBar } from "../components/ProgressBar";
 import { Header } from "../components/Header";
 import { AnswerLabel } from "../components/AnswerLabel"; // Проверь, существует ли этот компонент
 import { ThemeContext } from "../new_contexts/ThemeContext";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AppButton } from "../components/AppButton";
 
 const StepThree = () => {
   const location = useLocation();
@@ -13,6 +14,34 @@ const StepThree = () => {
 
   const { theme } = useContext(ThemeContext);
   const [emoji, setEmoji] = useState("");
+  const [checkButton, setCheckButton] = useState(true);
+
+  const navigate = useNavigate();
+  const goToNextPage = () => {
+    navigate("/step-four", {
+      state: {
+        previousNameValue,
+        previousPhoneValue,
+        eshkereValue,
+        course,
+        emoji,
+      },
+    });
+  };
+
+  useEffect(() => {
+    if (emoji) {
+      setCheckButton(false);
+    } else {
+      setCheckButton(true);
+    }
+  }, [emoji]);
+
+  const handleClick = () => {
+    if (emoji) {
+      goToNextPage();
+    }
+  };
 
   const emojiVariants = [
     {
@@ -56,7 +85,11 @@ const StepThree = () => {
                   />
                 ))}
               </ul>
-              <LinkButton path="/step-four" />
+              <AppButton
+                buttonClick={handleClick}
+                isDisabled={checkButton}
+                buttonText="Далее"
+              />
               {/* <p>{course}</p> */}
             </div>
           </div>

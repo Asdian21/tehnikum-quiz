@@ -3,6 +3,7 @@ import { ProgressBar } from "../components/ProgressBar";
 import { Header } from "../components/Header";
 import { LinkButton } from "../components/LinkButton";
 import { ThemeContext } from "../new_contexts/ThemeContext";
+import { AnswerLabel } from "../components/AnswerLabel";
 
 const StepFour = () => {
   const { theme } = useContext(ThemeContext);
@@ -40,6 +41,14 @@ const StepFour = () => {
             <div className="question">
               <Header headerType="h2" headerText="4. Занимательный вопрос" />
               <ul className="level-variants">
+                {levelVariants.map((elem) => (
+                  <AnswerLabel
+                    id={elem.id}
+                    AnswerLabel={elem.levelId}
+                    key={elem.id}
+                    labelChange={() => setNumber(elem.levelId)}
+                  />
+                ))}
                 <li className="variant-wrapper">
                   <input required type="radio" name="variant" id="variant-1" />
                   <label htmlFor="variant-1">1</label>
